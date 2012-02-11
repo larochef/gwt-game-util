@@ -37,6 +37,24 @@ import com.sfeir.canvas.util.client.event.ResourceLoadedEvent;
 public class ResourceManager {
 
 	/**
+	 * This interface defines objects used to apply modifications on all objects
+	 * of a given type
+	 * 
+	 * @author François LAROCHE
+	 * 
+	 * @param <T>
+	 *            the kind of object on which to bring a modification
+	 */
+	public static interface ObjectMofier<T> {
+		/**
+		 * Modify the object
+		 * 
+		 * @param object the object to modify
+		 */
+		public void modify(T object);
+	}
+
+	/**
 	 * Class defined to load a single resource and know when it is loaded
 	 * 
 	 * @author François LAROCHE
@@ -123,7 +141,8 @@ public class ResourceManager {
 				@Override
 				public void onLoad(LoadEvent event) {
 					addLoadedSize(getSize());
-					bus.fireEvent(new ResourceLoadedEvent(getLoadedPercentage(), image));
+					bus.fireEvent(new ResourceLoadedEvent(
+							getLoadedPercentage(), image));
 				}
 			});
 			this.url = url;
@@ -359,5 +378,33 @@ public class ResourceManager {
 			return 0;
 		}
 		return (float) this.loadedSize / (float) this.totalSize;
+	}
+
+	/**
+	 * Applies a modification on all audio resources
+	 * 
+	 * @see ObjectMofier
+	 * 
+	 * @param modifier
+	 *            the modification to apply
+	 */
+	public void modifAudio(ObjectMofier<Audio> modifier) {
+		for (AudioResourceLoader loader : this.audioLoaders.values()) {
+			modifier.modify(loader.getElement());
+		}
+	}
+
+	/**
+	 * Applies a modification on all image resources
+	 * 
+	 * @see ObjectMofier
+	 * 
+	 * @param modifier
+	 *            the modification to apply
+	 */
+	public void modifImages(ObjectMofier<Image> modifier) {
+		for (ImageResourceLoader loader : this.imageLoaders.values()) {
+			modifier.modify(loader.getElement());
+		}
 	}
 }
