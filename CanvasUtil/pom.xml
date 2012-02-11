@@ -60,10 +60,6 @@
 	<licenses>
 		...
 	</licenses -->
-	<organization>
-		<name>SFEIR</name>
-		<url>http://www.sfeir.com</url>
-	</organization>
 	<developers>
 		<developer>
 			<name>François LAROCHE</name>
