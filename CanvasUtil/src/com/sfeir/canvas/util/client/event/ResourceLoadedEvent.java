@@ -28,7 +28,7 @@ public class ResourceLoadedEvent extends GwtEvent<ResourceLoadedHandler> {
 
 	@Override
 	protected void dispatch(ResourceLoadedHandler handler) {
-		handler.onAllResourcesLoaded(this);
+		handler.onResourcesLoaded(this);
 	}
 
 	public float getPercentage() {

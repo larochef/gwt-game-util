@@ -11,5 +11,5 @@ import com.google.gwt.event.shared.EventHandler;
  */
 public interface ResourceLoadedHandler extends EventHandler {
 
-	public void onAllResourcesLoaded(ResourceLoadedEvent event);
+	public void onResourcesLoaded(ResourceLoadedEvent event);
 }
