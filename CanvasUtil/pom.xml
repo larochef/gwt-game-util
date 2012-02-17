@@ -6,7 +6,6 @@
 	<!-- The Basics -->
 	<groupId>com.sfeir</groupId>
 	<artifactId>gwt-canvas-utils</artifactId>
-	<version>0.1</version>
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -68,4 +67,5 @@
 		</developer>
 	</developers>
 
+	<version>1.0</version>
 </project>
